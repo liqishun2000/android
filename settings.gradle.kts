@@ -19,6 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "Android"
 include(":app")
- 
+include(":dependence")
