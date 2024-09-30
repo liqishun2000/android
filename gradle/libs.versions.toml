@@ -29,6 +29,31 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
+#region 郑君库
+sd-compose-core = "com.github.zj565061763:compose-core:1.0.16"
+sd-compose-systemui = "com.github.zj565061763:compose-systemui:1.1.2"
+sd-compose-button = "com.github.zj565061763:compose-button:1.0.0"
+sd-compose-input = "com.github.zj565061763:compose-input:1.2.2"
+sd-compose-refresh = "com.github.zj565061763:compose-refresh:1.0.0-beta01"
+sd-compose-paging = "com.github.zj565061763:compose-paging:1.0.0-alpha03"
+sd-compose-inputGroup = "com.github.zj565061763:compose-input-group:1.0.0-alpha01"
+sd-compose-text = "com.github.zj565061763:compose-text:1.0.0-alpha01"
+
+sd-coroutine = "com.github.zj565061763:coroutine:1.6.3"
+sd-loader = "com.github.zj565061763:loader:1.2.0"
+sd-retry = "com.github.zj565061763:retry:1.9.1"
+sd-datastore = "com.github.zj565061763:datastore:1.0.0-alpha05"
+sd-service = "com.github.zj565061763:service:1.5.0"
+sd-exception = "com.github.zj565061763:exception:1.1.0"
+sd-ctx = "com.github.zj565061763:ctx:1.3.5"
+sd-list = "com.github.zj565061763:list:1.0.0"
+sd-event = "com.github.zj565061763:event:1.1.1"
+sd-xlog = "com.github.zj565061763:xlog:1.0.1"
+sd-encrypt = "com.github.zj565061763:encrypt:972d6223ac"
+sd-utilsKtx = "com.github.zj565061763:utils-ktx:5f18b0bd40"
+#endregion
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

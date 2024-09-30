@@ -33,9 +33,11 @@ android {
 }
 
 dependencies {
+    //UI预览
     debugApi(libs.androidx.ui.tooling)
     debugApi(libs.androidx.ui.test.manifest)
 
+    //基础库
     api(libs.androidx.core.ktx)
     api(libs.androidx.lifecycle.runtime.ktx)
     api(libs.androidx.activity.compose)
@@ -44,4 +46,27 @@ dependencies {
     api(libs.androidx.ui.graphics)
     api(libs.androidx.ui.tooling.preview)
     api(libs.androidx.material3)
+
+    //region 郑君库
+    api(libs.sd.compose.core)
+    api(libs.sd.compose.systemui)
+    api(libs.sd.compose.button)
+    api(libs.sd.compose.input)
+    api(libs.sd.compose.refresh)
+    api(libs.sd.compose.paging)
+    api(libs.sd.compose.text)
+
+    api(libs.sd.coroutine)
+    api(libs.sd.loader)
+    api(libs.sd.retry)
+    api(libs.sd.datastore)
+    api(libs.sd.service)
+    api(libs.sd.exception)
+    api(libs.sd.ctx)
+    api(libs.sd.list)
+    api(libs.sd.event)
+    api(libs.sd.xlog)
+    api(libs.sd.encrypt)
+    api(libs.sd.utilsKtx)
+    //endregion
 }
