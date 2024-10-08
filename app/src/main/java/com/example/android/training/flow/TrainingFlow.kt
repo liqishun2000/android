@@ -1,0 +1,186 @@
+package com.example.android.training.flow
+
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
+/**
+ * 冷流是一个在没有收集者时不会产生任何数据的流,
+ * 在观察者（收集者）订阅（或收集）时，流才开始发射数据。每次新的收集者订阅时，都会重新执行流的代码.
+ * 每个收集者都获得自己的数据流，互不影响。即使多次收集，流的逻辑会独立执行，因此每个收集者都会收到独立的数据.
+ *
+ * 热流是一个在生成数据时始终处于活动状态的流。即使没有消费者（收集者），流依然可能继续发射数据.
+ * 数据会在流中持续发射，一旦有收集者加入，流立即将当前状态发送给他们，而不是重新执行流的逻辑.
+ * 所有的消费者共享同一个数据流，收集者接收的是相同的数据，比如事件或状态更新.
+ *
+ * */
+
+private fun main() {
+
+
+    trainingSharedFlow()
+}
+
+//region flow代码简单实现
+private fun testCollect() {
+    testScope(
+        {
+            onSuccess(1)
+        },
+        object : MyScope {
+            override fun onSuccess(i: Int) {
+                println(i)
+            }
+        },
+    )
+}
+
+private interface MyScope {
+
+    fun onSuccess(i: Int)
+}
+
+private fun testScope(block: MyScope.() -> Unit, scope: MyScope) {
+    scope.block()
+}
+//endregion
+
+//region 冷流flow 每次collect都会重新执行flow代码 互相独立
+private fun trainingFlow() {
+
+    runBlocking {
+        println("启动 runBlocking")
+
+        val flow = flow<Int> {
+            println("开始执行流")
+
+            for (i in 0 until 3) {
+                println("发射流$i")
+                emit(i)
+                delay(1000)
+            }
+        }
+
+
+        println("挂起 runBlocking 准备启动 coroutineScope")
+        coroutineScope {
+            println("启动 coroutineScope")
+            launch {
+                flow.collect { i ->
+                    println("collect: 接收流$i")
+                }
+
+            }
+
+            flow.collect { i ->
+                println("collect2: 接收流$i")
+            }
+
+            flow.collect { i ->
+                println("collect3: 接收流$i")
+            }
+
+
+        }
+
+        println("结束 runBlocking")
+    }
+}
+//endregion
+
+//region 热流StateFlow 所有消费者都是同一个数据流。StateFlow 必须有一个初始状态 collect后会一直挂起当前协程。
+private fun trainingStateFlow() {
+    runBlocking {
+        println("启动 runBlocking")
+
+        val stateFlow = MutableStateFlow(0)
+
+        launch {
+            for (i in 0 until 3) {
+                delay(1000)
+                println("更新状态")
+                stateFlow.value++
+            }
+        }
+
+
+        println("挂起 runBlocking 准备启动 coroutineScope")
+        coroutineScope {
+            println("启动 coroutineScope")
+
+            launch {
+                stateFlow.collect { i ->
+                    println("collect1: 接收流$i")
+                }
+            }
+
+            launch {
+                stateFlow.collect { i ->
+                    println("collect2: 接收流$i")
+                }
+            }
+
+            launch {
+                stateFlow.collect { i ->
+                    println("collect3: 接收流$i")
+                }
+            }
+
+        }
+
+        println("结束 runBlocking")
+    }
+
+}
+//endregion
+
+//region 热流StateFlow 所有消费者都是同一个数据流。SharedFlow collect后会一直挂起当前协程
+private fun trainingSharedFlow() {
+    runBlocking {
+        println("启动 runBlocking")
+
+        val sharedFlow = MutableSharedFlow<Int>()
+
+        launch {
+            for (i in 0 until 3) {
+                delay(1000)
+                println("更新状态")
+                sharedFlow.emit(i + 1)
+            }
+        }
+
+
+        println("挂起 runBlocking 准备启动 coroutineScope")
+        coroutineScope {
+            println("启动 coroutineScope")
+
+            launch {
+                sharedFlow.collect { i ->
+                    println("collect1: 接收流$i")
+                }
+            }
+
+            launch {
+                sharedFlow.collect { i ->
+                    println("collect2: 接收流$i")
+                }
+            }
+
+            launch {
+                sharedFlow.collect { i ->
+                    println("collect3: 接收流$i")
+                }
+            }
+
+        }
+
+        println("结束 runBlocking")
+    }
+}
+//endregion
+
+
