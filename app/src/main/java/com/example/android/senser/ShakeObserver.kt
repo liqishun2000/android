@@ -14,7 +14,7 @@ import kotlin.math.sqrt
 /**
  * 摇一摇监听
  * */
-object ShakeObserver : SensorEventListener {
+object ShakeSensor : SensorEventListener {
 
     val mShakeLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
