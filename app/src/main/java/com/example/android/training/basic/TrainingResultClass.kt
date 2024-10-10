@@ -1,6 +1,5 @@
 package com.example.android.training.basic
 
-import com.sd.lib.retry.fRetry
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
