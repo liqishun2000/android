@@ -22,11 +22,11 @@ open class BaseViewModel<S, E>(initState: S) : ViewModel() {
 
     val effectFlow = _effectFlow.asSharedFlow()
 
-    fun updateState(block: (S) -> S) {
+    protected fun updateState(block: (S) -> S) {
         _stateFlow.update(block)
     }
 
-    fun sendEffect(effect: E) {
+    protected fun sendEffect(effect: E) {
         viewModelScope.launch {
             _effectFlow.emit(effect)
         }
