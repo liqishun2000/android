@@ -1,5 +1,6 @@
 [versions]
 agp = "8.5.0"
+antifake = "1.7.0"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -10,6 +11,7 @@ activityCompose = "1.8.0"
 composeBom = "2024.04.01"
 appcompat = "1.6.1"
 material = "1.10.0"
+rootbeerLib = "0.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +30,11 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+#region 工具库
+antifake = { module = "io.github.happylishang:antifake", version.ref = "antifake" }
+rootbeer-lib = { module = "com.scottyab:rootbeer-lib", version.ref = "rootbeerLib" }
+#endregion
 
 #region 郑君库
 sd-compose-core = "com.github.zj565061763:compose-core:1.0.16"

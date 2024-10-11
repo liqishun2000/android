@@ -52,6 +52,7 @@ android {
 dependencies {
 
     implementation(projects.dependence)
+    implementation(projects.core)
 
 
     testImplementation(libs.junit)

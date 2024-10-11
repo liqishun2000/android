@@ -1,4 +1,4 @@
-package com.example.android.util
+package com.example.core.utils
 
 import android.graphics.Color
 import android.os.Build

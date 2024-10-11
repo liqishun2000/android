@@ -1,4 +1,4 @@
-package com.example.android.util
+package com.example.core.utils
 
 import android.util.Log
 import android.view.View
