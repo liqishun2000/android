@@ -48,4 +48,11 @@ object DeviceUtils {
         return rootBeer.isRooted
     }
 
+    /** 是否虚拟机 */
+    fun isVirtualMachine(context: Context): Boolean {
+        val absolutePath = context.filesDir.absolutePath
+        //  /data/user/0/包名/files
+        val split = absolutePath.split("/")
+        return split[4] != context.packageName
+    }
 }
