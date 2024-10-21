@@ -23,7 +23,12 @@ import com.example.android.training.compose.common.vm.PullToRefreshVM
 import com.sd.lib.compose.refresh.FRefreshContainer
 import com.sd.lib.compose.refresh.rememberFRefreshStateTop
 
-
+/**
+ *  下拉刷新
+ *
+ *  用的是嵌套滚动，所以内容布局需要可以滚动
+ *
+ * */
 @Composable
 fun PullToRefreshTrainingScreen(
     vm: PullToRefreshVM = viewModel()
