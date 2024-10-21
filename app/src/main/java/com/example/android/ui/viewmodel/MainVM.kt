@@ -1,14 +1,16 @@
 package com.example.android.ui.viewmodel
 
 import android.app.Activity
+import android.content.Intent
 import android.view.accessibility.AccessibilityManager
 import androidx.activity.ComponentActivity.ACCESSIBILITY_SERVICE
+import com.example.android.training.compose.common.CommonActivity
 import com.example.android.ui.viewmodel.base.BaseViewModel
 
 object MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
 
     fun click(activity: Activity){
-
+        activity.startActivity(Intent(activity,CommonActivity::class.java))
     }
 
     fun updateShake(shake: Boolean){
