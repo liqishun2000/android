@@ -17,6 +17,7 @@ import kotlinx.coroutines.runBlocking
  * 数据会在流中持续发射，一旦有收集者加入，流立即将当前状态发送给他们，而不是重新执行流的逻辑.
  * 所有的消费者共享同一个数据流，收集者接收的是相同的数据，比如事件或状态更新.
  *
+ *  StateFlow有set/get方法，必须有一个初值 SharedFlow没有初值，可以保留历史数据
  * */
 
 private fun main() {
@@ -138,7 +139,7 @@ private fun trainingStateFlow() {
 }
 //endregion
 
-//region 热流StateFlow 所有消费者都是同一个数据流。SharedFlow collect后会一直挂起当前协程
+//region SharedFlow 所有消费者都是同一个数据流。SharedFlow collect后会一直挂起当前协程。
 private fun trainingSharedFlow() {
     runBlocking {
         println("启动 runBlocking")
