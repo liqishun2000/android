@@ -36,7 +36,8 @@ import androidx.compose.ui.unit.dp
 @Preview(backgroundColor = 0xffffffff, showBackground = true)
 @Composable
 private fun Preview() {
-    Test()
+//    Test()
+    TrainingCustomAnimatable()
 }
 
 @Composable
@@ -151,7 +152,7 @@ private fun TrainingCustomAnimatable(modifier: Modifier = Modifier) {
         if (isVisible) {
             offset.animateTo(0f)
         } else {
-            offset.animateTo(-300f)
+            offset.snapTo(-300f)
         }
 
     }
