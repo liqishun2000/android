@@ -50,7 +50,10 @@ private fun testScope(block: MyScope.() -> Unit, scope: MyScope) {
 }
 //endregion
 
-//region 冷流flow 每次collect都会重新执行flow代码 互相独立
+//region snapShotFlow,collect后的代码不会执行，里面死循环。snapShotFlow只能观察State对象。
+//endregion
+
+//region 冷流flow 每次collect都会重新执行flow代码 互相独立 同一个协程内，第一个collect执行完毕才会执行后面的代码
 private fun trainingFlow() {
 
     runBlocking {
