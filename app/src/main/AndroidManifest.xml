@@ -28,6 +28,7 @@
         </activity>
         <activity android:name="com.example.android.training.permission.PermissionActivity" />
         <activity android:name="com.example.android.training.compose.common.CommonActivity"/>
+        <activity android:name="com.example.android.training.compose.statusbar.StatusBarTrainingActivity" />
     </application>
 
 </manifest>
