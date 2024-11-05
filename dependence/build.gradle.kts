@@ -47,6 +47,20 @@ dependencies {
     api(libs.androidx.ui.tooling.preview)
     api(libs.androidx.material3)
 
+    //region 常用依赖
+
+    //必须依赖
+    api ("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+    api ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    api ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+
+    //约束布局
+    api ("androidx.constraintlayout:constraintlayout-compose:1.1.0")
+
+    //修改状态栏
+    api ("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
+    //endregion
+
     //region 郑君库
     api(libs.sd.compose.core)
     api(libs.sd.compose.systemui)
