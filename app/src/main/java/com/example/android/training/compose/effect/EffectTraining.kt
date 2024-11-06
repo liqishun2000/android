@@ -19,7 +19,7 @@ fun EffectTraining(
         commonLog("SideEffect")
     }
 
-    //启动一个协程作用域 main线程
+    //启动一个协程作用域 main线程 重组代码运行完才运行
     LaunchedEffect(Unit) {
         commonLog("LaunchedEffect ${Thread.currentThread().name}")
     }
