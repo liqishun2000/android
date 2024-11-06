@@ -14,7 +14,7 @@ fun EffectTraining(
     modifier: Modifier = Modifier,
 ) {
 
-    //每次重组都会运行
+    //每次重组都会运行 A SideEffect runs after every recomposition。重组代码运行完才运行
     SideEffect {
         commonLog("SideEffect")
     }
