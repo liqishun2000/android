@@ -33,6 +33,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+/**
+ *
+ * Crossfade() 切换控件动画
+ * */
+
 @Preview(backgroundColor = 0xffffffff, showBackground = true)
 @Composable
 private fun Preview() {
