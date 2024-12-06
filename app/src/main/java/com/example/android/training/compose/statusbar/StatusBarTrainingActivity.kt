@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalDensity
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class StatusBarTrainingActivity:ComponentActivity() {
@@ -19,6 +22,9 @@ class StatusBarTrainingActivity:ComponentActivity() {
             SideEffect {
                 systemUiController.statusBarDarkContentEnabled = false
             }
+
+            //状态栏高度
+            val statusBarHeight = WindowInsets.statusBars.getTop(LocalDensity.current)
 
             SideEffect {
 
