@@ -51,14 +51,21 @@ dependencies {
 
     //必须依赖
     api ("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
-    api ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    api ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    api ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    api ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
     //约束布局
     api ("androidx.constraintlayout:constraintlayout-compose:1.1.0")
 
     //修改状态栏
     api ("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
+
+    //lottie
+    api ("com.airbnb.android:lottie-compose:5.2.0")
+
+    ////kotlin json解析
+    api ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+
     //endregion
 
     //region 郑君库
