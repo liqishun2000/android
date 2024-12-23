@@ -1,6 +1,7 @@
 package com.example.android.training.compose.common
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -24,14 +25,26 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 /**
  *  描边
  * */
-@Preview
+@Preview(backgroundColor = 0xffffffff, showBackground = true)
 @Composable
 private fun Preview() {
-    SimpleOutLineText()
+    Column {
+        SimpleOutLineText()
+
+        OutlineText(
+            text = "测试",
+            color = Color.White,
+        )
+
+        OutlineText2(
+            text = "测试",
+        )
+    }
 }
 
 @Composable
@@ -132,4 +145,19 @@ private fun OutlineText(
             style = style,
         )
     }
+}
+
+@Composable
+fun OutlineText2(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        text = text,
+        style = TextStyle(
+            color = Color.Green,
+            fontSize = 20.sp,
+            drawStyle = Stroke(width = 6f, join = StrokeJoin.Round)
+        )
+    )
 }
