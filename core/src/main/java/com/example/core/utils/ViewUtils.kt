@@ -26,8 +26,7 @@ object ViewUtils {
             stringBuilder.append("    ")
         }
         try {
-            Log.d(
-                "...",
+            commonLog(
                 stringBuilder.toString() + "level: $level name: ${view::class.java.simpleName} id:${
                     view.context!!.resources.getResourceEntryName(
                         view.id
@@ -35,8 +34,7 @@ object ViewUtils {
                 }"
             )
         } catch (e: Exception) {
-            Log.d(
-                "...",
+            commonLog(
                 stringBuilder.toString() + "level: $level name: ${view::class.java.simpleName}"
             )
         }

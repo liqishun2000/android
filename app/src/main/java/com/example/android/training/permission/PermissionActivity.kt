@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.android.ui.theme.AndroidTheme
+import com.example.core.utils.commonLog
 
 class PermissionActivity : ComponentActivity() {
 
@@ -34,9 +35,9 @@ class PermissionActivity : ComponentActivity() {
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
 
             if (result) {
-                Log.d("...", "权限被授予")
+                commonLog("权限被授予")
             } else {
-                Log.d("...", "权限被拒绝")
+                commonLog("权限被拒绝")
             }
         }.also {
             it.launch(android.Manifest.permission.ACTIVITY_RECOGNITION)
