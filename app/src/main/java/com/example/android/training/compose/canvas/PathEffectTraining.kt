@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StampedPathEffectStyle
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -98,14 +99,22 @@ fun PathEffectTraining(
                         .padding(top = 10.dp)
                         .height(20.dp)
                 ) {
-                    drawLine(
+                    val path = Path().apply {
+                        moveTo(0f,0f)
+                        lineTo(100f,0f)
+                        lineTo(100f,30f)
+                        close()
+                    }
+
+                    drawPath(
+                        path = path,
                         color = Color.Red,
-                        strokeWidth = 20.dp.toPx(),
-                        pathEffect = PathEffect.cornerPathEffect(100f),
-                        cap = StrokeCap.Round,
-                        start = Offset(0f, 20.dp.toPx() / 2),
-                        end = Offset(size.width, 20.dp.toPx() / 2)
+                        style = Stroke(
+                            width = 2.dp.toPx(),
+                            pathEffect = PathEffect.cornerPathEffect(10f)
+                        )
                     )
+
                 }
 
 
