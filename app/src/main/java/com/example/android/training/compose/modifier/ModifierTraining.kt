@@ -51,7 +51,7 @@ private fun PreviewDraw(modifier: Modifier = Modifier) {
 
 @Composable
 private fun DrawTraining(modifier: Modifier = Modifier) {
-    //graphicsLayer{}是在布局阶段，在绘制阶段之前
+    //graphicsLayer{}是在绘制阶段运行，但在draw在绘制阶段之前
     //drawBehind在drawWithContent之前 按顺序运行
     //drawWithContent如果不调用drawContent()方法，那么后面的draw不会调用，Box子项也不会绘制
     //drawContent() 开始绘制 之后的draw方法和内容布局,绘制完成后drawContent()结束
