@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.android.training.compose.regroup.RegroupScreen
 import com.example.android.ui.theme.AndroidTheme
 
 class CommonActivity : ComponentActivity() {
@@ -24,5 +25,6 @@ class CommonActivity : ComponentActivity() {
 @Composable
 private fun Screen(modifier: Modifier = Modifier) {
 
-    PullToRefreshTrainingScreen()
+//    PullToRefreshTrainingScreen()
+    RegroupScreen()
 }
