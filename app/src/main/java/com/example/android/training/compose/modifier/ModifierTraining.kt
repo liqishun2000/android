@@ -1,10 +1,11 @@
 package com.example.android.training.compose.modifier
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
@@ -14,10 +15,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.android.R
 import com.example.android.ktx.log
 
 
@@ -38,9 +44,54 @@ private fun BasicTraining(modifier: Modifier = Modifier) {
 }
 
 
+//region .graphicsLayer
+@Preview
+@Composable
+private fun PreviewGraphicsLayer() {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        GraphicsLayerRenderEffectTraining()
 
+    }
+}
 
+@Composable
+private fun GraphicsLayerRenderEffectTraining(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .size(100.dp)
+            .background(Color.White),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(R.drawable.head_portrait),
+            contentDescription = null
+        )
 
+        Box(
+            modifier = Modifier
+                .size(80.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .graphicsLayer {
+                        renderEffect = BlurEffect(40f,40f, TileMode.Repeated)
+                    }
+                    .background(Color.White.copy(alpha = 0.9f))
+            )
+
+            Text(
+                text = "text",
+                fontSize = 20.sp
+            )
+
+        }
+    }
+}
+//endregion
 
 //region .drawBehind .drawWithContent
 @Preview
@@ -73,7 +124,7 @@ private fun DrawTraining(modifier: Modifier = Modifier) {
             .graphicsLayer {
                 log("graphics")
             }
-    ){
+    ) {
         Text("text", modifier = Modifier.drawBehind {
             log("draw child")
         })
