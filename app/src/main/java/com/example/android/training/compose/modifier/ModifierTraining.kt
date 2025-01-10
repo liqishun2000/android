@@ -9,16 +9,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,6 +58,53 @@ private fun PreviewGraphicsLayer() {
     ) {
         GraphicsLayerRenderEffectTraining()
 
+        GraphicsLayerTraining()
+    }
+}
+
+@Composable
+private fun GraphicsLayerTraining(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .size(100.dp)
+            .background(Color.White),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(R.drawable.head_portrait),
+            contentDescription = null
+        )
+
+        Box(
+            modifier = Modifier
+                .size(80.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(17.dp))
+                    .graphicsLayer {
+                        renderEffect = BlurEffect(10f,10f, TileMode.Decal)
+                    }
+                    .background(Color.White)
+                    .clipToBounds(),
+                contentAlignment = Alignment.Center
+            ){
+                Image(
+                    modifier = Modifier.requiredSize(100.dp),
+                    contentScale = ContentScale.Crop,
+                    painter = painterResource(R.drawable.head_portrait),
+                    contentDescription = null
+                )
+            }
+
+            Text(
+                text = "text",
+                fontSize = 20.sp
+            )
+
+        }
     }
 }
 
