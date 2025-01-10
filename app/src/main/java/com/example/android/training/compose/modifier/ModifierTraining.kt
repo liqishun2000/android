@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
@@ -58,12 +59,12 @@ private fun PreviewGraphicsLayer() {
     ) {
         GraphicsLayerRenderEffectTraining()
 
-        GraphicsLayerTraining()
+        GraphicsLayerBlurTraining()
     }
 }
 
 @Composable
-private fun GraphicsLayerTraining(modifier: Modifier = Modifier) {
+private fun GraphicsLayerBlurTraining(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .size(100.dp)
@@ -88,7 +89,11 @@ private fun GraphicsLayerTraining(modifier: Modifier = Modifier) {
                         renderEffect = BlurEffect(10f,10f, TileMode.Decal)
                     }
                     .background(Color.White)
-                    .clipToBounds(),
+                    .clipToBounds()
+                    .drawWithContent {
+                        drawContent()
+                        drawRect(Color.White.copy(alpha = 0.4f), topLeft = Offset(0f,0f), size = size)
+                    },
                 contentAlignment = Alignment.Center
             ){
                 Image(
@@ -98,6 +103,7 @@ private fun GraphicsLayerTraining(modifier: Modifier = Modifier) {
                     contentDescription = null
                 )
             }
+
 
             Text(
                 text = "text",
