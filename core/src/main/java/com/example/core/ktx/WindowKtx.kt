@@ -7,7 +7,7 @@ import android.view.Window
 import android.view.WindowManager
 
 
-//this 沉浸式状态栏
+//region 沉浸式状态栏
 fun Window.fullScreen() {
     this.decorView.systemUiVisibility = getSystemUiVisibility()
 
