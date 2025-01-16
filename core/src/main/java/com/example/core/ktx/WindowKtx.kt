@@ -53,6 +53,7 @@ fun Window.setStatusBarDark(isDark: Boolean = true) {
     }
 }
 
+/** 在enableEdgeToEdge方法后调用 */
 fun Window.setStatusBarDarkNew(isDark: Boolean = true) {
     WindowCompat.getInsetsController(this,this.decorView).isAppearanceLightStatusBars = isDark
 }
