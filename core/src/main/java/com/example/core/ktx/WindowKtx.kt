@@ -5,6 +5,7 @@ import android.os.Build
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import androidx.core.view.WindowCompat
 
 
 //region 沉浸式状态栏
@@ -50,6 +51,10 @@ fun Window.setStatusBarDark(isDark: Boolean = true) {
         this.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         this.statusBarColor = Color.TRANSPARENT
     }
+}
+
+fun Window.setStatusBarDarkNew(isDark: Boolean = true) {
+    WindowCompat.getInsetsController(this,this.decorView).isAppearanceLightStatusBars = isDark
 }
 //endregion
 
