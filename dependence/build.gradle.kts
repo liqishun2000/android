@@ -67,6 +67,9 @@ dependencies {
     ////kotlin json解析
     api ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 
+    //可以activity和fragment中使用 by viewModels() 声明ViewModel
+    api ("androidx.activity:activity-ktx:1.10.0")
+    api ("androidx.fragment:fragment-ktx:1.8.5")
     //endregion
 
     //region 郑君库
