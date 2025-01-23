@@ -70,6 +70,9 @@ dependencies {
     //可以activity和fragment中使用 by viewModels() 声明ViewModel
     api ("androidx.activity:activity-ktx:1.10.0")
     api ("androidx.fragment:fragment-ktx:1.8.5")
+
+    // 权限请求框架：https://github.com/getActivity/XXPermissions
+    api ("com.github.getActivity:XXPermissions:18.68")
     //endregion
 
     //region 郑君库
