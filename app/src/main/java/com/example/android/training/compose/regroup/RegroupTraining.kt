@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.android.ktx.log
+import com.example.core.ktx.log
 import com.example.android.training.compose.regroup.vm.RegroupVM
 
 @Composable

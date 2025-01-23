@@ -16,7 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.android.R
-import com.example.android.ktx.log
+import com.example.core.ktx.log
 
 /**
  *

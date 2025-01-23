@@ -59,3 +59,24 @@ fun Window.setStatusBarDarkNew(isDark: Boolean = true) {
 }
 //endregion
 
+//region 导航栏高度
+fun Window.getNavigationBarHeight(): Int {
+    val context = this.decorView.context
+    val resourceId = context.resources.getIdentifier("navigation_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        return context.resources.getDimensionPixelSize(resourceId)
+    }
+    return 0
+}
+//endregion
+
+//region 状态栏高度
+fun Window.getStatusBarHeightUsingResources(): Int {
+    val context = this.decorView.context
+    val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        return context.resources.getDimensionPixelSize(resourceId)
+    }
+    return 0
+}
+//endregion
