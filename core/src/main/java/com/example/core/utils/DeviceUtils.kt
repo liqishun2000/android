@@ -1,9 +1,9 @@
 package com.example.core.utils
 
 import android.content.Context
+import android.content.Context.ACCESSIBILITY_SERVICE
 import android.provider.Settings
 import android.view.accessibility.AccessibilityManager
-import androidx.activity.ComponentActivity.ACCESSIBILITY_SERVICE
 import com.scottyab.rootbeer.RootBeer
 import com.snail.antifake.jni.EmulatorDetectUtil
 
