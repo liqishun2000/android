@@ -5,7 +5,7 @@ import android.content.Intent
 import com.example.android.training.compose.common.CommonActivity
 import com.example.android.ui.viewmodel.base.BaseViewModel
 
-object MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
+class MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
 
     fun click(activity: Activity){
         activity.startActivity(Intent(activity,CommonActivity::class.java))
