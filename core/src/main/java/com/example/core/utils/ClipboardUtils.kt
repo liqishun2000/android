@@ -4,6 +4,10 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 
+/**
+ *  重启后可以清空剪贴板。用输入法删除全部有时候删除不干净
+ *
+ * */
 object ClipboardUtils {
 
     /** 复制内容到剪贴板 */
