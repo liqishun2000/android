@@ -73,6 +73,10 @@ dependencies {
 
     // 权限请求框架：https://github.com/getActivity/XXPermissions
     api ("com.github.getActivity:XXPermissions:18.68")
+
+    //xml 流布局 app:flexWrap="wrap" 可以设置自动换行或者不换行
+    //          app:justifyContent="space_between" 设置排列方式
+    api ("com.google.android.flexbox:flexbox:3.0.0")
     //endregion
 
     //region 郑君库
