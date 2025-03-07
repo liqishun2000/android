@@ -64,8 +64,10 @@ dependencies {
     //lottie
     api ("com.airbnb.android:lottie-compose:5.2.0")
 
-    ////kotlin json解析
+    //kotlin json解析
     api ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+    //kotlin反射
+    api ("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
 
     //可以activity和fragment中使用 by viewModels() 声明ViewModel
     api ("androidx.activity:activity-ktx:1.10.0")
