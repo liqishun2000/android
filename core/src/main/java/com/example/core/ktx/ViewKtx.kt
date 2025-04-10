@@ -3,6 +3,8 @@ package com.example.core.ktx
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 fun View.showView() {
     this.visibility = View.VISIBLE
@@ -60,3 +62,26 @@ fun View.setMargin(startDp: Float = 0f, endDp: Float = 0f, topDp: Float = 0f, bo
 
     this.layoutParams = params
 }
+
+//region 状态栏高度
+fun View.getStatusBarHeight(): Int {
+    val windowInsets = ViewCompat.getRootWindowInsets(this)
+    windowInsets?.let {
+        val insets = it.getInsets(WindowInsetsCompat.Type.statusBars())
+        insets.top
+    }
+    return 0
+}
+//endregion
+
+
+//region 导航栏高度
+fun View.getNavigationBarHeight():Int{
+    val windowInsets = ViewCompat.getRootWindowInsets(this)
+    windowInsets?.let {
+        val insets = it.getInsets(WindowInsetsCompat.Type.navigationBars())
+        return insets.bottom
+    }
+    return 0
+}
+//endregion
