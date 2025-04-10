@@ -16,7 +16,7 @@ class AutoResizeTextView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
 
-    private var minTextSizePx = 1f // 最小字体大小（像素）
+    private var minTextSizePx = 1f // 最小字体大小
     private val defaultTextSizePx = textSize
 
     override fun setText(text: CharSequence?, type: BufferType?) {
@@ -26,7 +26,7 @@ class AutoResizeTextView @JvmOverloads constructor(
 
     private fun adjustTextSize() {
         val targetText = text?.toString() ?: return
-        if (width == 0 || height == 0) return // 确保布局完成
+        if (width == 0 || height == 0) return
 
         val targetWidth = width - paddingLeft - paddingRight
         val targetHeight = height - paddingTop - paddingBottom
@@ -40,7 +40,6 @@ class AutoResizeTextView @JvmOverloads constructor(
             alignment = getLayoutAlignment()
         )
 
-        // 使用二分查找优化查找合适的字体大小（此处按题主要求每次减1px，改用循环）
         var currentSize = defaultTextSizePx
         var suitableSize = minTextSizePx
         var found = false
@@ -80,9 +79,7 @@ class AutoResizeTextView @JvmOverloads constructor(
 
     private fun getLayoutAlignment(): Layout.Alignment {
         return when (gravity and Gravity.HORIZONTAL_GRAVITY_MASK) {
-            Gravity.START -> Layout.Alignment.ALIGN_NORMAL
             Gravity.CENTER_HORIZONTAL -> Layout.Alignment.ALIGN_CENTER
-            Gravity.END -> Layout.Alignment.ALIGN_OPPOSITE
             else -> Layout.Alignment.ALIGN_NORMAL
         }
     }
