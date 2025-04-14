@@ -68,7 +68,7 @@ fun View.getStatusBarHeight(): Int {
     val windowInsets = ViewCompat.getRootWindowInsets(this)
     windowInsets?.let {
         val insets = it.getInsets(WindowInsetsCompat.Type.statusBars())
-        insets.top
+        return insets.top
     }
     return 0
 }
