@@ -96,7 +96,7 @@ private fun trainingFlow() {
 }
 //endregion
 
-//region 热流StateFlow 所有消费者都是同一个数据流。StateFlow 必须有一个初始状态 collect后会一直挂起当前协程。
+//region 热流StateFlow 所有消费者都是同一个数据流。StateFlow 必须有一个初始状态 collect后会一直挂起当前协程。立即接受数据
 private fun trainingStateFlow() {
     runBlocking {
         println("启动 runBlocking")
@@ -142,7 +142,7 @@ private fun trainingStateFlow() {
 }
 //endregion
 
-//region SharedFlow 所有消费者都是同一个数据流。SharedFlow collect后会一直挂起当前协程。
+//region SharedFlow 所有消费者都是同一个数据流。SharedFlow collect后会一直挂起当前协程。默认不保存数据，则没有数据
 private fun trainingSharedFlow() {
     runBlocking {
         println("启动 runBlocking")
