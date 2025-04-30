@@ -19,6 +19,7 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -62,6 +63,11 @@ private fun MainScreen(
     val state by vm.stateFlow.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
+    LaunchedEffect(Unit) {
+        context.fFindActivity {
+            vm.observe(it)
+        }
+    }
 
     MainView(
         modifier = modifier,
@@ -70,6 +76,26 @@ private fun MainScreen(
                 vm.click(it)
             }
         },
+        onClickAdd = {
+            context.fFindActivity {
+                vm.clickAdd(it)
+            }
+        },
+        onClickDelete = {
+            context.fFindActivity {
+                vm.clickDelete(it)
+            }
+        },
+        onClickUpdate = {
+            context.fFindActivity {
+                vm.clickUpdate(it)
+            }
+        },
+        onClickQuery = {
+            context.fFindActivity {
+                vm.clickQuery(it)
+            }
+        }
     )
 }
 
@@ -77,6 +103,10 @@ private fun MainScreen(
 private fun MainView(
     modifier: Modifier = Modifier,
     onClickOperate: () -> Unit = {},
+    onClickAdd: () -> Unit = {},
+    onClickDelete: () -> Unit = {},
+    onClickUpdate: () -> Unit = {},
+    onClickQuery: () -> Unit = {},
 ) {
     Column(
         modifier = modifier,
@@ -85,9 +115,10 @@ private fun MainView(
     ) {
 
         val density = LocalDensity.current
+        val context = LocalContext.current
 
         Button(onClick = onClickOperate) {
-            Box{
+            Box {
                 Text(
                     text = "点击",
                     color = Color.Red,
@@ -120,6 +151,29 @@ private fun MainView(
                 .aspectRatio(1f)
                 .background(Color.LightGray)
         ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(20.dp)
+            ) {
+
+                Button(onClick = onClickAdd) {
+                    Text(text = "add")
+                }
+
+                Button(onClick = onClickDelete) {
+                    Text(text = "delete")
+                }
+
+                Button(onClick = onClickUpdate) {
+                    Text(text = "update")
+                }
+
+                Button(onClick = onClickQuery) {
+                    Text(text = "query")
+                }
+
+            }
 
         }
 

@@ -1,7 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     id("kotlinx-serialization")
+
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -79,6 +82,11 @@ dependencies {
     //xml 流布局 app:flexWrap="wrap" 可以设置自动换行或者不换行
     //          app:justifyContent="space_between" 设置排列方式
     api ("com.google.android.flexbox:flexbox:3.0.0")
+
+    //room
+    api("androidx.room:room-runtime:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    api("androidx.room:room-ktx:2.6.1")
     //endregion
 
     //region 郑君库
