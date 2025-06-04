@@ -1,10 +1,13 @@
 package com.example.core.utils
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.core.content.FileProvider
+import com.example.core.ktx.toastMsg
 import java.io.File
 import java.io.FileOutputStream
 
@@ -62,4 +65,25 @@ object IntentUtils {
 //    android:resource="@xml/file_paths" />
 //    </provider>
     //endregion
+
+    private fun openFileWithOtherApp(context: Context, uri: Uri) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                setDataAndType(uri, context.contentResolver.getType(uri))
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            context.startActivity(Intent.createChooser(intent, "open file"))
+        } catch (e: ActivityNotFoundException) {
+            toastMsg("No program was found that could open this file.", context)
+        }
+    }
+
+    private fun openFileWithOtherApp(context: Context, file: File) {
+        val uri = FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.provider",
+            file
+        )
+        openFileWithOtherApp(context,uri)
+    }
 }
