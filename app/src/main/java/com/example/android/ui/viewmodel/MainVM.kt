@@ -7,6 +7,7 @@ import com.example.android.training.compose.common.CommonActivity
 import com.example.android.training.room.dao.RecordDao
 import com.example.android.training.room.database.RecordDatabase
 import com.example.android.training.room.model.RecordInfo
+import com.example.android.training.xml.CoordinatorLayoutTrainingActivity
 import com.example.android.ui.viewmodel.base.BaseViewModel
 import com.example.core.ktx.log
 import kotlinx.coroutines.launch
@@ -14,7 +15,8 @@ import kotlinx.coroutines.launch
 class MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
 
     fun click(activity: Activity){
-        activity.startActivity(Intent(activity,CommonActivity::class.java))
+//        activity.startActivity(Intent(activity,CommonActivity::class.java))
+        activity.startActivity(Intent(activity,CoordinatorLayoutTrainingActivity::class.java))
     }
 
     fun observe(activity: Activity){

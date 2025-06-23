@@ -82,6 +82,8 @@ dependencies {
     //xml 流布局 app:flexWrap="wrap" 可以设置自动换行或者不换行
     //          app:justifyContent="space_between" 设置排列方式
     api ("com.google.android.flexbox:flexbox:3.0.0")
+    api ("androidx.coordinatorlayout:coordinatorlayout:1.3.0")
+    api ("com.google.android.material:material:1.1.0")
 
     //room
     api("androidx.room:room-runtime:2.6.1")

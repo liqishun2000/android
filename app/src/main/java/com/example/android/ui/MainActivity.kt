@@ -35,7 +35,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.android.ui.theme.AndroidTheme
 import com.example.android.ui.viewmodel.MainVM
-import com.sd.lib.ctx.fFindActivity
+import com.example.core.ktx.findComponentActivity
 
 
 class MainActivity : ComponentActivity() {
@@ -64,7 +64,7 @@ private fun MainScreen(
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        context.fFindActivity {
+        context.findComponentActivity {
             vm.observe(it)
         }
     }
@@ -72,27 +72,27 @@ private fun MainScreen(
     MainView(
         modifier = modifier,
         onClickOperate = {
-            context.fFindActivity {
+            context.findComponentActivity {
                 vm.click(it)
             }
         },
         onClickAdd = {
-            context.fFindActivity {
+            context.findComponentActivity {
                 vm.clickAdd(it)
             }
         },
         onClickDelete = {
-            context.fFindActivity {
+            context.findComponentActivity {
                 vm.clickDelete(it)
             }
         },
         onClickUpdate = {
-            context.fFindActivity {
+            context.findComponentActivity {
                 vm.clickUpdate(it)
             }
         },
         onClickQuery = {
-            context.fFindActivity {
+            context.findComponentActivity {
                 vm.clickQuery(it)
             }
         }

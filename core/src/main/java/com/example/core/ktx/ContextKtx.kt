@@ -1,10 +1,12 @@
 package com.example.core.ktx
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.res.Resources
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.WindowManager
+import androidx.activity.ComponentActivity
 
 //region 屏幕高度
 
@@ -27,3 +29,14 @@ fun Context.getScreenHeight(): Int {
 fun getScreenDisplayHeight() =  Resources.getSystem().displayMetrics.heightPixels
 
 //endregion
+inline fun Context.findComponentActivity(block:(ComponentActivity)->Unit){
+    findComponentActivityOrNull()?.let { block(it) }
+}
+
+tailrec fun Context.findComponentActivityOrNull():ComponentActivity?{
+    return when(this){
+        is ComponentActivity -> this
+        is ContextWrapper -> baseContext.findComponentActivityOrNull()
+        else -> null
+    }
+}
