@@ -1,6 +1,7 @@
 package com.example.android.training.coroutine
 
 import com.example.android.ktx.runCatchingIgnore
+import com.example.core.ktx.log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -15,11 +16,42 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
+private val ioScope = CoroutineScope(Dispatchers.IO)
+private fun ioScope(block:suspend ()->Unit) = ioScope.launch { block.invoke() }
 
 private fun main() {
 
-    trainingSimplifyCallback()
+    trainingSuspendCancellableCoroutine()
 }
+
+//region suspendCancellableCoroutine
+private fun trainingSuspendCancellableCoroutine(){
+    runBlocking {
+        suspendCancellableCoroutineContent()
+
+        delay(2000)
+    }
+}
+
+private suspend fun suspendCancellableCoroutineContent(){
+    return suspendCancellableCoroutine { continuation ->
+        testCallback {
+            println("testCallback")
+            continuation.resume(Unit)
+        }
+        continuation.invokeOnCancellation {
+            println("continuation.invokeOnCancellation")
+        }
+    }
+}
+
+private fun testCallback(block:()->Unit){
+    ioScope {
+        delay(1000)
+        block.invoke()
+    }
+}
+//endregion
 
 //region 异步回调简化
 private fun trainingSimplifyCallback() {
