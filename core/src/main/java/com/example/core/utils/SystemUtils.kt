@@ -2,6 +2,8 @@ package com.example.core.utils
 
 import android.app.ActivityManager
 import android.content.Context
+import android.os.Build
+import java.util.Locale
 
 object SystemUtils {
 
@@ -17,5 +19,14 @@ object SystemUtils {
             }
         }
         return false
+    }
+
+    /** 摩托罗拉设备 */
+    fun isMotorolaDevice(): Boolean {
+        return try {
+            Build.MANUFACTURER.lowercase().contains("motorola");
+        } catch (e: Exception) {
+            false;
+        }
     }
 }
