@@ -40,3 +40,26 @@ tailrec fun Context.findComponentActivityOrNull():ComponentActivity?{
         else -> null
     }
 }
+
+//region system ui height
+
+// 获取状态栏高度
+fun Context.getStatusBarHeight(): Int {
+    var height = 0
+    val resourceId = this.resources.getIdentifier("status_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        height = this.resources.getDimensionPixelSize(resourceId)
+    }
+    return height
+}
+
+// 获取导航栏高度
+fun Context.getNavigationBarHeight(): Int {
+    var height = 0
+    val resourceId = this.resources.getIdentifier("navigation_bar_height", "dimen", "android")
+    if (resourceId > 0) {
+        height = this.resources.getDimensionPixelSize(resourceId)
+    }
+    return height
+}
+//endregion

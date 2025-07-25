@@ -10,12 +10,23 @@ import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.TextViewCompat
+import kotlin.math.ceil
 
-fun View.setMargin(startDp: Float = 0f, endDp: Float = 0f, topDp: Float = 0f, bottomDp: Float = 0f) {
+fun View.setMargin(
+    startDp: Float = 0f,
+    endDp: Float = 0f,
+    topDp: Float = 0f,
+    bottomDp: Float = 0f
+) {
     val params = this.layoutParams as ViewGroup.MarginLayoutParams
 
     val context = this.context
-    params.setMargins(startDp.dpToPx(context), topDp.dpToPx(context), endDp.dpToPx(context), bottomDp.dpToPx(context))
+    params.setMargins(
+        startDp.dpToPx(context),
+        topDp.dpToPx(context),
+        endDp.dpToPx(context),
+        bottomDp.dpToPx(context)
+    )
 
     this.layoutParams = params
 }
@@ -32,7 +43,7 @@ fun View.showView() {
         .start()
 }
 
-fun View.hideView(end:()->Unit = {}) {
+fun View.hideView(end: () -> Unit = {}) {
     this.animate()
         .translationY(this.height.toFloat())
         .setDuration(300)
@@ -47,7 +58,7 @@ fun View.hideView(end:()->Unit = {}) {
         .start()
 }
 
-fun View.showViewAlpha(){
+fun View.showViewAlpha() {
     this.visibility = View.VISIBLE
     this.alpha = 0f
     this.animate()
@@ -57,7 +68,7 @@ fun View.showViewAlpha(){
         .start()
 }
 
-fun View.hideViewAlpha(){
+fun View.hideViewAlpha() {
     this.animate()
         .alpha(0f)
         .setDuration(300)
@@ -82,7 +93,7 @@ fun View.getStatusBarHeight(): Int {
 //endregion
 
 //region 导航栏高度
-fun View.getNavigationBarHeight():Int{
+fun View.getNavigationBarHeight(): Int {
     val windowInsets = ViewCompat.getRootWindowInsets(this)
     windowInsets?.let {
         val insets = it.getInsets(WindowInsetsCompat.Type.navigationBars())
@@ -92,7 +103,20 @@ fun View.getNavigationBarHeight():Int{
 }
 //endregion
 
-//region 自动缩放TextView
+//region TextView
+
+// 文字完全显示
+fun TextView.fullDisplay(): Boolean {
+    val height = this.height
+    val paint = this.paint
+    val textWidth = paint.measureText(this.text.toString())
+    val textHeight: Int =
+        ceil(textWidth / this.width).toInt() * this.lineHeight
+    return textHeight <= height
+}
+
+
+// 自动缩放TextView
 fun createAutoSizeTextView(context: Context): TextView {
     return TextView(context).apply {
         ellipsize = null // 禁用省略号
