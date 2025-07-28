@@ -85,11 +85,19 @@ dependencies {
     api ("androidx.coordinatorlayout:coordinatorlayout:1.3.0")
     api ("com.google.android.material:material:1.1.0")
 
+    //blankj
+    api ("com.blankj:utilcodex:1.31.1")
+
     //room
     api("androidx.room:room-runtime:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
     api("androidx.room:room-ktx:2.6.1")
     //endregion
+
+    //coil
+    api("io.coil-kt.coil3:coil-compose:3.1.0") //compose
+    api("io.coil-kt.coil3:coil-network-okhttp:3.1.0") //加载网络图片
+    api("io.coil-kt.coil3:coil-svg:3.1.0") //加载svg
 
     //region 郑君库
     api(libs.sd.compose.core)
