@@ -64,7 +64,6 @@ fun View.postRunnable(delay:Long = 0,runnable: Runnable){
 
 //region 显示隐藏动效
 fun View.showViewBottom() {
-    this.isVisible = false
     // 从底部滑出（初始位置在屏幕外）
     this.translationY = this.height.toFloat()
     this.animate()
