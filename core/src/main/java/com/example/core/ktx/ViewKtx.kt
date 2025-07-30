@@ -9,7 +9,10 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import kotlin.math.ceil
 
 /**
@@ -26,6 +29,7 @@ fun View.fullScreen(){
             View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 }
 
+//region common
 fun View.setMargin(
     startDp: Float = 0f,
     endDp: Float = 0f,
@@ -45,19 +49,35 @@ fun View.setMargin(
     this.layoutParams = params
 }
 
+
+fun View.postRunnable(delay:Long = 0,runnable: Runnable){
+    val lifecycleOwner = this.context as? LifecycleOwner
+    lifecycleOwner?.lifecycle?.addObserver(object : DefaultLifecycleObserver {
+        override fun onDestroy(owner: LifecycleOwner) {
+            super.onDestroy(owner)
+            this@postRunnable.removeCallbacks(runnable)
+        }
+    })
+    this.postDelayed(runnable,delay)
+}
+//endregion
+
 //region 显示隐藏动效
-fun View.showView() {
-    this.visibility = View.VISIBLE
+fun View.showViewBottom() {
+    this.isVisible = false
     // 从底部滑出（初始位置在屏幕外）
     this.translationY = this.height.toFloat()
     this.animate()
         .translationY(0f)
         .setDuration(300)
         .setInterpolator(AccelerateDecelerateInterpolator())
+        .withStartAction {
+            this.isVisible = true
+        }
         .start()
 }
 
-fun View.hideView(end: () -> Unit = {}) {
+fun View.hideViewBottom(end: () -> Unit = {}) {
     this.animate()
         .translationY(this.height.toFloat())
         .setDuration(300)
@@ -73,12 +93,15 @@ fun View.hideView(end: () -> Unit = {}) {
 }
 
 fun View.showViewAlpha() {
-    this.visibility = View.VISIBLE
+    this.isVisible = false
     this.alpha = 0f
     this.animate()
         .alpha(1f)
         .setDuration(300)
         .setInterpolator(AccelerateDecelerateInterpolator())
+        .withStartAction {
+            this.isVisible = true
+        }
         .start()
 }
 
