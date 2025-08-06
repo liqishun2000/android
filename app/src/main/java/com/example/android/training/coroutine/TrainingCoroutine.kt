@@ -40,6 +40,9 @@ private fun trainingCallbackFlow() = callbackFlow {
 
 //endregion
 
+//region withContext 也会挂起协程等待里面子job全部完成
+//endregion
+
 //region suspendCancellableCoroutine
 private fun trainingSuspendCancellableCoroutine(){
     runBlocking {
