@@ -1,0 +1,5 @@
+包名：com.example.android
+keyAlias=app
+keyPassword=F3CC22278F9487EC83240FDAC1B2E114
+storeFile=../key/sign.jks
+storePassword=F3CC22278F9487EC83240FDAC1B2E114
