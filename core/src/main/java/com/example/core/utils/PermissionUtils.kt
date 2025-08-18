@@ -25,6 +25,13 @@ object PermissionUtils {
         return requestCommon(activity, permission)
     }
 
+    suspend fun requestNotification(activity: Activity) {
+        val permission = Permission.POST_NOTIFICATIONS
+        if (XXPermissions.isGranted(activity, permission)) return
+
+        return requestCommon(activity, permission)
+    }
+
     private suspend fun requestCommon(activity: Activity, permission: String) {
         return suspendCancellableCoroutine { continuation ->
             XXPermissions.with(activity)
