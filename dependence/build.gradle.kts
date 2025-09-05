@@ -99,6 +99,12 @@ dependencies {
     api("io.coil-kt.coil3:coil-network-okhttp:3.1.0") //加载网络图片
     api("io.coil-kt.coil3:coil-svg:3.1.0") //加载svg
 
+    //retrofit
+    api("com.squareup.retrofit2:retrofit:3.0.0")
+    api("com.squareup.retrofit2:converter-gson:3.0.0")
+    api("com.squareup.okhttp3:logging-interceptor:4.9.1")
+
+
     //region 郑君库
     api(libs.sd.compose.core)
     api(libs.sd.compose.systemui)
