@@ -23,7 +23,7 @@ abstract class RecordDatabase : RoomDatabase() {
                     context.applicationContext,
                     RecordDatabase::class.java,
                     "RecordInfo",
-                ).build().also {
+                ).fallbackToDestructiveMigration().build().also {
                     instance = it
                 }
             }
