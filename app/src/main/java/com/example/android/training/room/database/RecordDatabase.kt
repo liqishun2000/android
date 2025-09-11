@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.android.training.room.convert.MapConverter
 import com.example.android.training.room.dao.RecordDao
 import com.example.android.training.room.model.RecordInfo
 
 @Database(entities = [RecordInfo::class], version = 1)
+@TypeConverters(MapConverter::class)
 abstract class RecordDatabase : RoomDatabase() {
 
     abstract fun recordDao(): RecordDao
