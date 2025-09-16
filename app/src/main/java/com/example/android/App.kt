@@ -2,6 +2,7 @@ package com.example.android
 
 import android.app.Application
 import com.example.core.ktx.log
+import com.example.core.utils.ActivityStackUtils
 import com.example.core.utils.AppStateUtils
 
 class App:Application() {
@@ -10,5 +11,6 @@ class App:Application() {
         super.onCreate()
         val foreground = AppStateUtils.isForeground(this)
         log("foreground:$foreground")
+        ActivityStackUtils.init(this)
     }
 }

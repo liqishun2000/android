@@ -15,5 +15,5 @@ data class RecordInfo(
     @PrimaryKey(autoGenerate = true) val id:Int = 0,
     @ColumnInfo(name = "name") val name: String = "",
     @TypeConverters(MapConverter::class)
-    val map: Map<String, String>
+    val map: Map<String, String> = mutableMapOf()
 )
