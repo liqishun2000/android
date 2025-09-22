@@ -104,6 +104,9 @@ dependencies {
     api("com.squareup.retrofit2:converter-gson:3.0.0")
     api("com.squareup.okhttp3:logging-interceptor:4.9.1")
 
+    //datastore
+    api("androidx.datastore:datastore-preferences:1.1.1")
+
 
     //region 郑君库
     api(libs.sd.compose.core)
