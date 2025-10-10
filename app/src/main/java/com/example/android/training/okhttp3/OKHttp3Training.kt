@@ -3,11 +3,13 @@ package com.example.android.training.okhttp3
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
+import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
+import okhttp3.ResponseBody.Companion.toResponseBody
 import java.io.IOException
 
 /**
@@ -16,6 +18,32 @@ import java.io.IOException
  *  用execute方法则用当前线程发起网络请求
  * */
 
+//region 拦截器
+private class TestInterceptor : Interceptor{
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+        //获取请求
+        val request = chain.request()
+
+        //执行请求
+        val response = chain.proceed(request)
+
+        //读取响应 每个响应体只能读取一次
+        val bodyString = response.body?.string() ?: ""
+
+        return response.newBuilder()
+            .body(
+                bodyString.toResponseBody(response.body?.contentType())
+            )
+            .build()
+    }
+
+}
+
+private fun interceptTraining(){
+
+}
+//endregion
 
 //region 简单使用
 private fun sendPostRequestAsync(callback:(String?)-> Unit){
