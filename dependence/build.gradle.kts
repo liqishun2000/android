@@ -107,6 +107,10 @@ dependencies {
     //datastore
     api("androidx.datastore:datastore-preferences:1.1.1")
 
+    //协程
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    //kotlin 版本
+//    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.10")
 
     //region 郑君库
     api(libs.sd.compose.core)
