@@ -590,18 +590,16 @@ fun EqualizerDemoScreen(
                 Text("经典系列", style = MaterialTheme.typography.titleMedium)
                 Spacer(Modifier.height(8.dp))
             }
-            items(15) { idx ->
+            items(15, key = { presetList[it].id }) { idx ->
                 val preset = presetList[idx]
-                key(preset.id) {
-                    EqPresetItem(
-                        preset = preset,
-                        isSelected = selectedPreset == preset.id,
-                        onClick = {
-                            selectedPreset = preset.id
-                            onSelectPreset(preset)
-                        }
-                    )
-                }
+                EqPresetItem(
+                    preset = preset,
+                    isSelected = selectedPreset == preset.id,
+                    onClick = {
+                        selectedPreset = preset.id
+                        onSelectPreset(preset)
+                    }
+                )
             }
 
             // 特殊效果
@@ -610,7 +608,7 @@ fun EqualizerDemoScreen(
                 Text("特殊效果", style = MaterialTheme.typography.titleMedium)
                 Spacer(Modifier.height(8.dp))
             }
-            items(16) { idx ->
+            items(16,key = { presetList[it+15].id }) { idx ->
                 val preset = presetList[idx + 15]
                 key(preset.id) {
                     EqPresetItem(
