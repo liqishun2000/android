@@ -35,6 +35,7 @@
         <activity android:name="com.example.android.training.compose.statusbar.StatusBarTrainingActivity" />
         <activity android:name="com.example.android.training.xml.CoordinatorLayoutTrainingActivity" />
         <activity android:name="com.example.android.training.xml.ClipTrainingActivity" />
+        <activity android:name="com.example.android.training.audio.EqualizerTrainingActivity" />
     </application>
 
 </manifest>

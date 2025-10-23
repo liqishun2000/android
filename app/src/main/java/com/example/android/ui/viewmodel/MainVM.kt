@@ -3,6 +3,7 @@ package com.example.android.ui.viewmodel
 import android.app.Activity
 import android.content.Intent
 import androidx.lifecycle.viewModelScope
+import com.example.android.training.audio.EqualizerTrainingActivity
 import com.example.android.training.compose.common.CommonActivity
 import com.example.android.training.room.dao.RecordDao
 import com.example.android.training.room.database.RecordDatabase
@@ -19,12 +20,13 @@ import kotlin.random.Random
 class MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
 
     fun click(activity: Activity) = viewModelScope.launch {
-        runCatching {
-            PermissionUtils.requestNotification(activity)
-        }.onSuccess {
-            val random = Random.nextInt(0, 100)
-            NotificationUtils.postNotification(activity, "test notification:$random")
-        }
+//        runCatching {
+//            PermissionUtils.requestNotification(activity)
+//        }.onSuccess {
+//            val random = Random.nextInt(0, 100)
+//            NotificationUtils.postNotification(activity, "test notification:$random")
+//        }
+        activity.startActivity(Intent(activity, EqualizerTrainingActivity::class.java))
     }
 
     fun observe(activity: Activity){
