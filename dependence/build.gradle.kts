@@ -64,6 +64,9 @@ dependencies {
     //修改状态栏
     api ("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
 
+    // Compose Icons
+    api("androidx.compose.material:material-icons-extended:1.7.8")
+
     //lottie
     api ("com.airbnb.android:lottie-compose:5.2.0")
 

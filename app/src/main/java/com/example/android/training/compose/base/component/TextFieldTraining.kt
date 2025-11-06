@@ -1,24 +1,36 @@
-package com.example.android.training.compose.common
+package com.example.android.training.compose.base.component
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -32,7 +44,65 @@ import androidx.compose.ui.unit.sp
 @Preview
 @Composable
 private fun Preview() {
-    TextFieldTraining()
+
+    val (content,input) = remember { mutableStateOf("") }
+
+    Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+        TextFieldTraining()
+
+        SimpleTextField(content,input)
+
+        SimpleTextField("test",input)
+    }
+}
+
+@Composable
+private fun SimpleTextField(
+    searchContent: String,
+    inputString: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth(1f)
+            .height(40.dp)
+            .background(Color.DarkGray, RoundedCornerShape(50))
+            .border(1.dp, Color.Gray, RoundedCornerShape(50))
+            .padding(horizontal = 13.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            imageVector = Icons.Default.Search,
+            contentDescription = null,
+            modifier = Modifier.size(20.dp)
+        )
+        BasicTextField(
+            value = searchContent,
+            onValueChange = inputString,
+            modifier = Modifier.weight(1f),
+            textStyle = LocalTextStyle.current.copy(
+                color = Color.White,
+                fontSize = 14.sp
+            ),
+            decorationBox = { innerTextField ->
+                if (searchContent.isEmpty()) {
+                    Text(
+                        text = "Search",
+                        fontSize = 14.sp,
+                        color = Color.LightGray
+                    )
+                }
+                innerTextField()
+            }
+        )
+        Icon(
+            imageVector = Icons.Default.Close,
+            contentDescription = null,
+            modifier = Modifier.size(20.dp)
+        )
+    }
+
 }
 
 @Composable
