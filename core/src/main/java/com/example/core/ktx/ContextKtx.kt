@@ -2,6 +2,7 @@ package com.example.core.ktx
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Build
 import android.util.DisplayMetrics
@@ -39,6 +40,10 @@ tailrec fun Context.findComponentActivityOrNull():ComponentActivity?{
         is ContextWrapper -> baseContext.findComponentActivityOrNull()
         else -> null
     }
+}
+
+inline fun <reified T> Context.startActivity(block:(Intent)-> Intent = { it }){
+    this.startActivity(block(Intent(this,T::class.java)))
 }
 
 //region system ui height

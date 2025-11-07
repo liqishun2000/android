@@ -16,7 +16,7 @@ import com.example.android.R
 
 /**
  *
- * <com.google.android.material.appbar.AppBarLayout 有默认背景，需要手动设为透明
+ * <com.google.android.material.appbar.AppBarLayout 有默认背景和阴影，需要手动设为透明
  * */
 class CoordinatorLayoutTrainingActivity : ComponentActivity() {
 

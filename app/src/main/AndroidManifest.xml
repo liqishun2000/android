@@ -36,6 +36,8 @@
         <activity android:name="com.example.android.training.xml.CoordinatorLayoutTrainingActivity" />
         <activity android:name="com.example.android.training.xml.ClipTrainingActivity" />
         <activity android:name="com.example.android.training.audio.EqualizerTrainingActivity" />
+        <activity android:name="com.example.android.ui.TestActivity" />
+        <activity android:name="com.example.android.training.xml.RecycleViewTraining" />
     </application>
 
 </manifest>

@@ -3,19 +3,13 @@ package com.example.android.ui.viewmodel
 import android.app.Activity
 import android.content.Intent
 import androidx.lifecycle.viewModelScope
-import com.example.android.training.audio.EqualizerTrainingActivity
-import com.example.android.training.compose.common.CommonActivity
 import com.example.android.training.room.dao.RecordDao
 import com.example.android.training.room.database.RecordDatabase
 import com.example.android.training.room.model.RecordInfo
-import com.example.android.training.xml.CoordinatorLayoutTrainingActivity
+import com.example.android.training.xml.RecycleViewTraining
 import com.example.android.ui.viewmodel.base.BaseViewModel
 import com.example.core.ktx.log
-import com.example.core.utils.NotificationUtils
-import com.example.core.utils.PermissionUtils
-import com.hjq.permissions.XXPermissions
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 class MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
 
@@ -26,7 +20,7 @@ class MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
 //            val random = Random.nextInt(0, 100)
 //            NotificationUtils.postNotification(activity, "test notification:$random")
 //        }
-        activity.startActivity(Intent(activity, EqualizerTrainingActivity::class.java))
+//        activity.startActivity(Intent(activity, EqualizerTrainingActivity::class.java))
     }
 
     fun observe(activity: Activity){

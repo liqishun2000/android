@@ -36,6 +36,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.android.ui.theme.AndroidTheme
 import com.example.android.ui.viewmodel.MainVM
 import com.example.core.ktx.findComponentActivity
+import com.example.core.ktx.startActivity
 
 
 class MainActivity : ComponentActivity() {
@@ -171,6 +172,10 @@ private fun MainView(
 
                 Button(onClick = onClickQuery) {
                     Text(text = "query")
+                }
+
+                Button(onClick = { context.startActivity<TestActivity>() }) {
+                    Text(text = "to Test")
                 }
 
             }
