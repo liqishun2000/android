@@ -16,6 +16,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.android.ui.theme.AndroidTheme
 import com.example.core.utils.commonLog
 
+/**
+ * android 13开始读取存储需要额外添加权限，例如READ_MEDIA_AUDIO等
+ * android 10需要添加android:requestLegacyExternalStorage="true"
+ * 才能正常按读取文件。但是可以统一使用对应的api获取对应的文件
+ *
+ * */
 class PermissionActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
