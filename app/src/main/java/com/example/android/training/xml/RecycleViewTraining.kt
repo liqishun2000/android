@@ -19,9 +19,7 @@ import com.example.core.ktx.log
  * 外层传入unspecified的测量模式，RecycleView的高度就不受自己控制了，
  * RecycleView会全部展开。只要外层是NestedScrollView，NestedScrollView是mathParent
  * 或者wrapContent都一样
- * 如果传入的是exactly，RecycleView的高度为wrap_content,那么RecycleView
- * 的高度则为可选的最大高度。（不会全部展开）
- * ScrollView套一个ViewGroup再套一个RecycleView是可以的
+ * 在NestedScrollView中，只有嵌套一层ViewGroup后，RecycleView设置固定高度才不会全部展开
  * */
 class RecycleViewTraining: ComponentActivity() {
 
