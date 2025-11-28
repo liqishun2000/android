@@ -12,6 +12,7 @@ composeBom = "2025.10.01"
 appcompat = "1.7.1"
 material = "1.13.0"
 rootbeerLib = "0.1.1"
+exifinterface = "1.3.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -58,6 +59,7 @@ sd-event = "com.github.zj565061763:event:1.1.1"
 sd-xlog = "com.github.zj565061763:xlog:1.0.1"
 sd-encrypt = "com.github.zj565061763:encrypt:972d6223ac"
 sd-utilsKtx = "com.github.zj565061763:utils-ktx:5f18b0bd40"
+androidx-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
 #endregion
 
 
