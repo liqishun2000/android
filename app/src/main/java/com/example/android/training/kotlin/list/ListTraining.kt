@@ -21,3 +21,13 @@ fun main() {
 
     list.getOrElse(1){ it }
 }
+
+/** 两个列表索引跟随 */
+private fun indexFollow(){
+    val list1 = listOf("1","3","2")
+    val list2 = listOf("1","2","3")
+
+    val valueToIndex = list1.withIndex().associate { it.value to it.index }
+    val sortedBy = list2.sortedBy { valueToIndex[it] }
+
+}
