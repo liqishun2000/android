@@ -20,7 +20,7 @@ package com.example.android.training.compose
  * 预加载性能优化:
  * 通过引入新的预加载行为，Lazy List 和 Lazy Grid 的滚动性能得到显著提升。
  * 现在可以通过LazyLayoutCacheWindow自定义预加载的前向项目数量和保留的后向项目数量
- * 二位滚动api:
+ * 二维滚动api:
  * 继Draggable2D之后，本次更新推出了Scrollable2D，为 Compose 添加了完整的二维滚动功能。
  * 该 API 支持同时在两个方向上的滚动和滑动操作，适用于电子表格或图片查看器等复杂布局
  * 滚动互操作性改:
