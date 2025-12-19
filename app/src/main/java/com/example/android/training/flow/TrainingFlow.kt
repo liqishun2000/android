@@ -1,9 +1,12 @@
 package com.example.android.training.flow
 
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -25,6 +28,48 @@ private fun main() {
 
     trainingSharedFlow()
 }
+
+
+//region channelFlow 创建支持背压的流，如果collect未处理完，那么发送方将挂起。且其支持在不同协程发送
+private suspend fun trainingChannelFlow(){
+    channelFlow {
+        launch {
+            for (i in 0 until 10) {
+                delay(10)
+                send("launch i:$i")
+            }
+        }
+        send("1")
+        launch {
+            for (i in 0 until 10) {
+                send("launch2:$i")
+            }
+        }
+        send("over")
+    }.collect {
+        delay(1000)
+        println(it)
+    }
+}
+//endregion
+
+//region callbackFlow 多次回调转流，例：事件回调
+private fun trainingCallbackFlow() = callbackFlow {
+//    val callback = object : Callback {
+//        override fun onNext(value: String) {
+    trySend(Unit)
+//        }
+//        override fun onComplete() {
+//            close()
+//        }
+//    }
+//    registerCallback(callback)
+    awaitClose {
+//        unregisterCallback(callback)
+    }
+}
+
+//endregion
 
 //region flow代码简单实现
 private fun testCollect() {

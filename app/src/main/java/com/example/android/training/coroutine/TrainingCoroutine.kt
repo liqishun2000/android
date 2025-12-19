@@ -26,19 +26,7 @@ private fun main() {
     trainingSuspendCancellableCoroutine()
 }
 
-//region callbackFlow 多次回调转流，例：事件回调
-private fun trainingCallbackFlow() = callbackFlow {
-    val callback = {
-        trySend(Unit)
-    }
 
-    // register(callback)
-    awaitClose {
-        //unregister(callback)
-    }
-}
-
-//endregion
 
 //region withContext 也会挂起协程等待里面子job全部完成
 //endregion
