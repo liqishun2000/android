@@ -21,6 +21,8 @@ import kotlinx.coroutines.runBlocking
  * 所有的消费者共享同一个数据流，收集者接收的是相同的数据，比如事件或状态更新.
  *
  *  StateFlow有set/get方法，必须有一个初值 SharedFlow没有初值，可以保留历史数据
+ *
+ *  StateFlow collect可以立刻获取一个值 sharedFlow就算设置了缓存，如果缓存没有数据collect收不到值
  * */
 
 private fun main() {
