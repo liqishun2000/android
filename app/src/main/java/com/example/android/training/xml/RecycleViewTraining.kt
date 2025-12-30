@@ -20,6 +20,8 @@ import com.example.core.ktx.log
  * RecycleView会全部展开。只要外层是NestedScrollView，NestedScrollView是mathParent
  * 或者wrapContent都一样
  * 在NestedScrollView中，只有嵌套一层ViewGroup后，RecycleView设置固定高度才不会全部展开
+ *
+ * adapter设置setIsRecyclable() 来处理是否可回收
  * */
 class RecycleViewTraining: ComponentActivity() {
 
