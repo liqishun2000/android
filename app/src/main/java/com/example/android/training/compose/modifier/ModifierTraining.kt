@@ -189,7 +189,7 @@ private fun DrawTraining(modifier: Modifier = Modifier) {
 }
 //endregion
 
-//region .requiredSize
+//region .requiredSize 可以超出父容器限制
 @Preview
 @Composable
 private fun PreviewRequiredSize(modifier: Modifier = Modifier) {
@@ -207,7 +207,7 @@ private fun RequiredSizeTraining(modifier: Modifier = Modifier) {
 }
 //endregion
 
-//region .wrapContentSize
+//region .wrapContentSize 其中的unbounded 可以超出父容器限制
 @Preview
 @Composable
 private fun PreviewWrapContentSize(modifier: Modifier = Modifier) {
