@@ -1,8 +1,10 @@
 package com.example.core.utils
 
 import android.app.Activity
+import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
+import java.io.File
 
 object UriUtils {
 
@@ -39,4 +41,22 @@ object UriUtils {
 
         return FileInfo(fileName, mimeType, fileSize)
     }
+
+//    fun getUriFromFile(filePath: String,context: Context): android.net.Uri? {
+//        return try {
+//            val file = File(filePath)
+//            // 确保文件存在
+//            if (!file.exists()) {
+//                return null
+//            }
+//            FileProvider.getUriForFile(
+//                context,
+//                "${context.packageName}.provider",  // 与 manifest 中配置的 authority 一致
+//                file
+//            )
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            null
+//        }
+//    }
 }
