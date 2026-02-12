@@ -5,4 +5,19 @@ package com.example.android.training.jetpack.media3
  * 设置: app:surface_type="texture_view"
  * app:shutter_background_color="@color/base_transparent"
  *
+ * 媒体通知栏 player事件拦截 用ForwardingPlayer
+ * class MusicPlayer(
+ *     private val player: Player
+ * ) : ForwardingPlayer(player) {
+ *
+ *     override fun seekToPrevious() {
+ *         mediaLog("MusicPlayer>>>seekToPrevious")
+ *         AudioPlayer.playPreview()
+ *     }
+ *
+ *     override fun seekToNext() {
+ *         mediaLog("MusicPlayer>>>seekToNext")
+ *         AudioPlayer.playNext()
+ *     }
+ * }
  * */
