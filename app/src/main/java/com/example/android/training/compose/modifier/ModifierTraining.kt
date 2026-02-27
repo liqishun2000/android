@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -18,14 +20,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.draw.dropShadow
+import androidx.compose.ui.draw.innerShadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android.R
@@ -48,6 +54,55 @@ private fun BasicTraining(modifier: Modifier = Modifier) {
     )
 }
 
+//region 阴影 Modifier.dropShadow() Modifier.innerShadow()
+@Preview
+@Composable
+private fun PreviewShadowTraining() {
+    Column(
+        modifier = Modifier
+            .width(200.dp)
+            .background(Color.White)
+            .padding(bottom = 20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ){
+        Box(
+            modifier = Modifier
+                .size(50.dp)
+                .dropShadow(
+                    shape = RoundedCornerShape(24.dp),
+                    shadow = Shadow(
+                        color = Color.Red.copy(alpha = 0.25f),
+                        offset = DpOffset(4.dp, 6.dp),     // x,y 偏移
+                        radius = 12.dp,                     // 模糊半径（越大越虚）
+                        spread = 2.dp                       // 扩散（正值变大，负值变小）
+                    )
+                )
+                .background(Color.White, RoundedCornerShape(24.dp))
+        ) {
+            // 内容
+        }
+
+        Box(
+            modifier = Modifier
+                .size(50.dp)
+                .background(Color(0xFFF5F5F5), RoundedCornerShape(24.dp))
+                .innerShadow(
+                    shape = RoundedCornerShape(24.dp),
+                    shadow = Shadow(
+                        color = Color.Red.copy(alpha = 0.22f),
+                        offset = DpOffset(3.dp, 4.dp),
+                        radius = 10.dp,
+                        spread = 1.5.dp
+                    )
+                )
+        ) {
+            // 内容
+        }
+
+    }
+}
+//endregion
 
 //region .graphicsLayer
 @Preview
@@ -85,13 +140,17 @@ private fun GraphicsLayerBlurTraining(modifier: Modifier = Modifier) {
                     .fillMaxSize()
                     .clip(RoundedCornerShape(17.dp))
                     .graphicsLayer {
-                        renderEffect = BlurEffect(10f,10f, TileMode.Decal)
+                        renderEffect = BlurEffect(10f, 10f, TileMode.Decal)
                     }
                     .background(Color.White)
                     .clipToBounds()
                     .drawWithContent {
                         drawContent()
-                        drawRect(Color.White.copy(alpha = 0.4f), topLeft = Offset(0f,0f), size = size)
+                        drawRect(
+                            Color.White.copy(alpha = 0.4f),
+                            topLeft = Offset(0f, 0f),
+                            size = size
+                        )
                     },
                 contentAlignment = Alignment.Center
             ){
@@ -135,7 +194,7 @@ private fun GraphicsLayerRenderEffectTraining(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxSize()
                     .graphicsLayer {
-                        renderEffect = BlurEffect(40f,40f, TileMode.Repeated)
+                        renderEffect = BlurEffect(40f, 40f, TileMode.Repeated)
                     }
                     .background(Color.White.copy(alpha = 0.9f))
             )
