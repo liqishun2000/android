@@ -1,12 +1,12 @@
 package com.example.android.ui.viewmodel
 
 import android.app.Activity
-import android.content.Intent
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import com.example.android.training.room.dao.RecordDao
 import com.example.android.training.room.database.RecordDatabase
 import com.example.android.training.room.model.RecordInfo
-import com.example.android.training.xml.RecycleViewTraining
 import com.example.android.ui.viewmodel.base.BaseViewModel
 import com.example.core.ktx.log
 import kotlinx.coroutines.launch
@@ -32,9 +32,7 @@ class MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
     }
 
     fun clickAdd(activity: Activity){
-        viewModelScope.launch {
-            getRecordDao(activity).insert(RecordInfo(name = "1"))
-        }
+        num.floatValue += 1
     }
 
     fun clickDelete(activity: Activity){
@@ -60,11 +58,17 @@ class MainVM:BaseViewModel<MainVM.State,Unit>(State()) {
     }
 
     fun updateStepCount(stepCount: Int){
-        updateState { it.copy(stepCount = stepCount) }
+    }
+
+    var num = mutableFloatStateOf(0f)
+    init {
+        updateState {
+            it.copy(stepCount = { num.floatValue })
+        }
     }
 
     data class State(
         val shake:Boolean = false,
-        val stepCount:Int = 0,
+        val stepCount: ()-> Float = { 0.5f  },
     )
 }

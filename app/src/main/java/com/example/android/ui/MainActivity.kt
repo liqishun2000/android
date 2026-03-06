@@ -1,12 +1,10 @@
 package com.example.android.ui
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,7 +17,6 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,6 +33,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.android.ui.theme.AndroidTheme
 import com.example.android.ui.viewmodel.MainVM
 import com.example.core.ktx.findComponentActivity
+import com.example.core.ktx.log
 import com.example.core.ktx.startActivity
 
 
@@ -64,14 +62,11 @@ private fun MainScreen(
     val state by vm.stateFlow.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
-    LaunchedEffect(Unit) {
-        context.findComponentActivity {
-            vm.observe(it)
-        }
-    }
+    log("MainScreen regroup")
 
     MainView(
         modifier = modifier,
+        progress = state.stepCount,
         onClickOperate = {
             context.findComponentActivity {
                 vm.click(it)
@@ -103,12 +98,14 @@ private fun MainScreen(
 @Composable
 private fun MainView(
     modifier: Modifier = Modifier,
+    progress:()-> Float = { 0.5f },
     onClickOperate: () -> Unit = {},
     onClickAdd: () -> Unit = {},
     onClickDelete: () -> Unit = {},
     onClickUpdate: () -> Unit = {},
     onClickQuery: () -> Unit = {},
 ) {
+    log("MainView regroup")
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -143,7 +140,7 @@ private fun MainView(
                 .background(Color.Gray)
                 .padding(20.dp)
         ) {
-            Text(text = "content")
+            Text(text = progress.invoke().toString())
         }
 
         Box(
