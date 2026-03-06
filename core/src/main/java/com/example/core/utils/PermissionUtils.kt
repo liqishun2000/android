@@ -5,12 +5,26 @@ import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.OnPermissionPageCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
-import com.sc.qrbar.ktx.activeResume
-import com.sc.qrbar.ktx.activeResumeWithException
+import com.example.core.ktx.activeResume
+import com.example.core.ktx.activeResumeWithException
 import kotlinx.coroutines.suspendCancellableCoroutine
 
 object PermissionUtils {
 
+    suspend fun requestManageExtStorage(activity: Activity) {
+        val permission = Permission.MANAGE_EXTERNAL_STORAGE
+        if (XXPermissions.isGranted(activity, permission)) return
+
+        return requestCommon(activity, permission)
+    }
+
+
+    suspend fun requestMediaAudio(activity: Activity) {
+        val permission = Permission.READ_MEDIA_AUDIO
+        if (XXPermissions.isGranted(activity, permission)) return
+
+        return requestCommon(activity, permission)
+    }
     suspend fun requestWriteStorage(activity: Activity) {
         val permission = Permission.WRITE_EXTERNAL_STORAGE
         if (XXPermissions.isGranted(activity, permission)) return

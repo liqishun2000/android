@@ -110,6 +110,9 @@ dependencies {
     //datastore
     api("androidx.datastore:datastore-preferences:1.1.1")
 
+    //glide
+    api("com.github.bumptech.glide:glide:4.16.0")
+
     //exif
     api(libs.androidx.exifinterface)
 
