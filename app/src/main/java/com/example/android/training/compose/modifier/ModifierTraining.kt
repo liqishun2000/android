@@ -62,7 +62,7 @@ private fun PreviewShadowTraining() {
         modifier = Modifier
             .width(200.dp)
             .background(Color.White)
-            .padding(bottom = 20.dp),
+            .padding(vertical = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ){
