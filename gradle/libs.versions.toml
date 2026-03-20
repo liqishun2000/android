@@ -1,7 +1,7 @@
 [versions]
-agp = "8.6.0"
+agp = "9.1.0"
 antifake = "1.7.0"
-kotlin = "2.0.21"
+kotlin = "2.2.10"
 coreKtx = "1.10.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -71,7 +71,6 @@ androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", vers
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 
