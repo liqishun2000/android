@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.example.dependence"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24
@@ -115,6 +115,10 @@ dependencies {
 
     //exif
     api(libs.androidx.exifinterface)
+
+    //Navigation 3
+    api(libs.androidx.navigation3.runtime)
+    api(libs.androidx.navigation3.ui)
 
     //协程
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")

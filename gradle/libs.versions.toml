@@ -13,6 +13,7 @@ appcompat = "1.7.1"
 material = "1.13.0"
 rootbeerLib = "0.1.1"
 exifinterface = "1.3.6"
+nav3 = "1.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -60,6 +61,11 @@ sd-xlog = "com.github.zj565061763:xlog:1.0.1"
 sd-encrypt = "com.github.zj565061763:encrypt:972d6223ac"
 sd-utilsKtx = "com.github.zj565061763:utils-ktx:5f18b0bd40"
 androidx-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
+#endregion
+
+#region Navigation 3
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3" }
 #endregion
 
 
