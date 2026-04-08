@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 
     id("com.google.devtools.ksp")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -65,4 +66,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
     ksp("androidx.room:room-compiler:2.8.4")
+
+    //hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+    androidTestImplementation(libs.hilt.android.testing)
+    kspAndroidTest(libs.hilt.compiler)
 }
