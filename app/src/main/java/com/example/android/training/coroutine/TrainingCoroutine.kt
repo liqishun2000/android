@@ -1,20 +1,18 @@
 package com.example.android.training.coroutine
 
-import com.example.android.ktx.runCatchingIgnore
-import com.example.core.ktx.log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
+import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
@@ -26,7 +24,41 @@ private fun main() {
     trainingSuspendCancellableCoroutine()
 }
 
+//region 限制协程并发
 
+//semaphore.withPermit 需要整块运行结束才释放许可
+private suspend fun semaphoreTraining() = coroutineScope{
+    val semaphore = Semaphore(3) // 最多允许 3 个协程并发执行
+
+    val jobs = (1..10).map { i ->
+        launch {
+            semaphore.withPermit {
+                println("Task $i started  [${Thread.currentThread().name}]")
+                delay(1000) // 模拟耗时操作
+                println("Task $i finished")
+            }
+        }
+    }
+
+    println("All tasks done")
+}
+
+//delay就会释放并行槽位
+private suspend fun parallelismTraining() = withContext(Dispatchers.Default.limitedParallelism(3)) {
+
+    val jobs = (1..10).map { i ->
+        launch {
+            println("Task $i started  [${Thread.currentThread().name}]")
+            delay(1000) // 模拟耗时操作
+            println("Task $i finished")
+        }
+    }
+
+    println("All tasks done")
+}
+
+
+//endregion
 
 //region withContext 也会挂起协程等待里面子job全部完成
 //endregion
