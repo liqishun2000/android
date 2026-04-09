@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.android.training.hilt.HiltTrainingActivity
 import com.example.android.training.xml.RecycleViewTraining
 import com.example.core.ktx.startActivity
 
@@ -60,6 +61,9 @@ private fun TestView(
             context.startActivity<RecycleViewTraining>()
         }) { Text("RecycleViewTraining") }
 
+        Button({
+            context.startActivity<HiltTrainingActivity>()
+        }) { Text("HiltTraining") }
     }
 
 }
