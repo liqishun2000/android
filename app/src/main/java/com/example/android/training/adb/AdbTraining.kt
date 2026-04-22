@@ -18,3 +18,8 @@ package com.example.android.training.adb
  * 查看activity信息
  * adb shell dumpsys activity activities
  * */
+
+/**
+ * 输入内容
+ * adb shell "input text 'hello world'"
+ * */
