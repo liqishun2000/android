@@ -17,6 +17,9 @@ package com.example.android.training.adb
  * activity
  * 查看activity信息
  * adb shell dumpsys activity activities
+ *
+ * 当前activity
+ * adb shell dumpsys window | findstr mCurrentFocus
  * */
 
 /**
